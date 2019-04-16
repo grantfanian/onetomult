@@ -19,31 +19,19 @@ if mask!=None:
 else:
     filtered=onlyfiles
 commandout=[]
-if platform.system=="Windows":
-    for i in range(0,len(filtered)-1):
+for i in range(1,len(filtered)):
+    if platform.system=="Windows":
         a=list(subprocess.getstatusoutput("copy /F "+args.src+" "+filtered[i]))
-        if a[0]!=0:
-            print(a[1])
-            raise UserWarning("Error occurred.\n Abort, Retry or Skip? ")
-            userinput=input()
-            if userinput=="A" or userinput=="a":
-                sys.exit(1)
-            if userinput=="S" or userinput=="s":
-                i+=1
-        else:
-            i+=1
-        commandout.append(a)
-else:
-    for i in range(0,len(filtered)-1):
+    else:
         a=list(subprocess.getstatusoutput("cp -vf "+args.src+" "+filtered[i]))
-        if a[0]!=0:
-            print(a[1])
-            raise UserWarning("Error occurred.\n Abort, Retry or Skip? ")
-            userinput=input()
-            if userinput=="A" or userinput=="a":
-                sys.exit(1)
-            if userinput=="S" or userinput=="s":
-                i+=1
-        else:
+    if a[0]!=0:
+        print(a[1])
+        raise UserWarning("Error occurred.\n Abort, Retry or Skip? ")
+        userinput = input()
+        if userinput=="A" or userinput=="a":
+            sys.exit(1)
+        if userinput=="S" or userinput=="s":
             i+=1
-    commandout.append(a)
+    else:
+        i+=1
+commandout.append(a)
