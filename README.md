@@ -10,7 +10,3 @@ positional arguments:
 optional arguments:  
   -h, --help            show this help message and exit  
   --mask MASK, -m MASK  Mask to choose files from
-# Bugs
-If you'll find bugs, feel free to report.  
-VK: @funh4xx0r;  
-Email: grantfanian3@gmail.com
